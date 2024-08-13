@@ -48,7 +48,7 @@ async function addNewEvent(event) {
 
     await createEvent(
         addEvent.name.value,
-        addEvent.date.value,
+        new Date(addEvent.date.value),
         addEvent.location.value,
         addEvent.description.value
     );
@@ -61,7 +61,7 @@ async function createEvent(name, date, location, description) {
         const response = await fetch(EVENTS_API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({name, date: new Date, location, description})
+            body: JSON.stringify({name, date, location, description})
         });
         const json = await response.json();
         console.log(json);
@@ -105,7 +105,7 @@ function render() {
         eventCard.classList.add("event");
         eventCard.innerHTML = `
         <p><b>Name:</b> ${event.name}</p>
-        <p><b>Date:</b> ${event.date}</p>
+        <p><b>Date:</b> ${new Date(event.date).toLocaleDateString()}</p>
         <p><b>Location:</b> ${event.location}</p>
         <p><b>Description:</b> ${event.description}</p>
         `;
