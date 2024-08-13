@@ -104,10 +104,10 @@ function render() {
         const eventCard = document.createElement("li");
         eventCard.classList.add("event");
         eventCard.innerHTML = `
-        <h3>${event.name}</h3>
-        <p>${event.date}</p>
-        <p>${event.location}</p>
-        <p>${event.description}</p>
+        <p><b>Name:</b> ${event.name}</p>
+        <p><b>Date:</b> ${event.date}</p>
+        <p><b>Location:</b> ${event.location}</p>
+        <p><b>Description:</b> ${event.description}</p>
         `;
 
         // add delete button
